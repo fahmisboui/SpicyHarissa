@@ -9,11 +9,7 @@ export default function NavBar() {
   useEffect(() => {
     const handleScroll = () => {
       if (typeof window !== "undefined") {
-        if (window.scrollY === 0) {
-          setScrolled(false); // Transparent when at the top
-        } else {
-          setScrolled(true); // Add background color when scrolling
-        }
+        setScrolled(window.scrollY > 0); // Simplified scroll check
       }
     };
 
@@ -40,7 +36,7 @@ export default function NavBar() {
           </div>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex space-x-4">
+          <div className="hidden sm:flex space-x-4">
             <a href="#services" className="text-white hover:text-gray-300 px-3 py-2 rounded-md">
               Services
             </a>
@@ -56,7 +52,7 @@ export default function NavBar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="sm:hidden">
             <button
               className="bg-[#800A07] text-white focus:outline-none p-2 rounded-md"
               onClick={toggleMenu}

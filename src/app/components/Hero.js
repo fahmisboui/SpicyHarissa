@@ -7,6 +7,7 @@ export default function Hero() {
   const [wordIndex, setWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [initialWaitDone, setInitialWaitDone] = useState(false); // New state for initial delay
+  const [isClient, setIsClient] = useState(false); // Track if the component is rendered on the client
 
   const words = ["spicy", "exciting", "engaging", "fun"];
   const typingSpeed = 80; // Typing speed in ms
@@ -18,10 +19,15 @@ export default function Hero() {
   const [hasAnimated, setHasAnimated] = useState(false); // Track if the animation has already occurred
 
   useEffect(() => {
+    // Ensure this effect only runs on the client
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
     if (!hasAnimated) {
       // Set shorter delays for faster animations
       setTimeout(() => setAnimatingIndex(1), 500); // Delay for the second text
-      setTimeout(() => setAnimatingIndex(2), 1000); // Delay for the third text
+      setTimeout(() => setAnimatingIndex(2), 1300); // Delay for the third text
 
       setHasAnimated(true); // Ensure animation happens only once
     }
@@ -34,7 +40,7 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    if (!initialWaitDone) return; // Wait until the initial delay is done
+    if (!initialWaitDone || !isClient) return; // Wait until the initial delay is done and only run on the client
 
     const handleTyping = () => {
       const currentWord = words[wordIndex];
@@ -60,7 +66,7 @@ export default function Hero() {
 
     const timeout = setTimeout(handleTyping, isDeleting ? deletingSpeed : typingSpeed);
     return () => clearTimeout(timeout);
-  }, [displayedText, isDeleting, wordIndex, initialWaitDone]);
+  }, [displayedText, isDeleting, wordIndex, initialWaitDone, isClient]);
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
@@ -87,7 +93,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="absolute inset-x-0 top-[calc(50%-200px)] flex justify-center items-center text-center text-white z-10">
-      <div>
+        <div>
           <h1
             className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 ${
               animatingIndex >= 0 ? "animate-fadeInUp delay-[50ms]" : "opacity-0"
@@ -116,18 +122,23 @@ export default function Hero() {
           </p>
         </div>
       </div>
-            {/* Bottom Image */}
-            <picture>
-        <source
-          srcSet="/HeroImageDesktop.png"
-          media="(min-width: 475px)"
-        />
-        <img
-          src="/HeroImageMobile.png"
-          alt="Hero Background"
-          className="absolute bottom-0 w-full object-cover"
-        />
-      </picture>
+
+      {/* Bottom Image */}
+      {isClient && (
+        <picture>
+          <source
+            srcSet="/HeroImageDesktop.png"
+            media="(min-width: 475px)"
+          />
+          <img
+            src="/HeroImageMobile.png"
+            alt="Hero Background"
+            className="absolute bottom-0 w-full object-cover"
+            onContextMenu={(e) => e.preventDefault()}
+            draggable="false"
+          />
+        </picture>
+      )}
     </section>
   );
 }
