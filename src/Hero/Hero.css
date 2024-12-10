@@ -1,0 +1,69 @@
+.hero{
+    position: relative;
+    background: linear-gradient(to top, rgb(194, 65, 12), rgb(185, 28, 28), rgb(127, 29, 29));
+    height:fit-content;
+}
+
+.main-section{
+    margin-top: 7rem;
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 5rem;
+
+    @media (max-width: 768px) {
+        margin-top: 3rem;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 4rem;
+    }
+}
+
+.left-section h4{
+    color:orange;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.left-section h1 {
+color: white;
+text-transform: uppercase;
+font-weight: 700;
+line-height: 1;
+font-size:6rem;
+margin-bottom: 1rem;
+
+@media (max-width: 768px) {
+    font-size: 4rem;
+}
+}
+
+.left-section p{
+    color: #aebb50;
+    font-size: 2rem;
+}
+
+.right-section img{
+    width: 300px;
+    @media (max-width: 768px) {
+        width: 60%;
+    }
+}
+
+
+/*svg css*/
+.wave {
+    position:absolute;
+    bottom: -95px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 100px;
+}
+
