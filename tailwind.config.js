@@ -22,10 +22,17 @@ module.exports = {
         blink: "blink 1s steps(1, start) infinite",
       },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        black: "var(--black)",
+        "dark-red": "var(--dark-red)",
+        red: "var(--red)",
+        white: "var(--white)",
       },
+      fontFamily: {
+        "headers-headers-navigations":
+          "var(--headers-headers-navigations-font-family)",
+        paragraph: "var(--paragraph-font-family)",
     },
   },
+},
   plugins: [],
 };

@@ -91,37 +91,38 @@ export default function Hero() {
         <div className="absolute top-40 bottom-40 right-[18px] w-[1px] bg-white"></div>
       </div>
 
-      {/* Content */}
-      <div className="absolute inset-x-0 top-[calc(50%-200px)] flex justify-center items-center text-center text-white z-10">
-        <div>
-          <h1
-            className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 ${
-              animatingIndex >= 0 ? "animate-fadeInUp delay-[50ms]" : "opacity-0"
-            }`}
-          >
-            Spicy Harissa
-          </h1>
-          <h1
-            className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 ${
-              animatingIndex >= 1 ? "animate-fadeInUp delay-[200ms]" : "opacity-0"
-            }`}
-          >
-            Game Development Studio
-          </h1>
-          <p
-            className={`text-lg sm:text-xl md:text-2xl ${
-              animatingIndex >= 2 ? "animate-fadeInUp delay-[1000ms]" : "opacity-0"
-            }`}
-          >
-            We make{" "}
-            <span className="text-[#FF4500] relative font-bold">
-              {displayedText}
-              <span className="absolute inline-block w-[2px] h-[1em] center bg-white animate-blink"></span>
-            </span>{" "}
-            games.
-          </p>
-        </div>
-      </div>
+{/* Content */}
+<div className="absolute inset-x-0 top-[calc(50%-150px)] md:top-[calc(50%-30%)]  flex justify-center items-center text-center text-white z-10">
+  <div>
+    <h1
+      className={`text-3xl sm:text-5xl md:text-6xl font-bold mb-4 ${
+        animatingIndex >= 0 ? "animate-fadeInUp delay-[50ms]" : "opacity-0"
+      }`}
+    >
+      Spicy Harissa
+    </h1>
+    <h1
+      className={`text-3xl sm:text-5xl md:text-6xl font-bold mb-4 ${
+        animatingIndex >= 1 ? "animate-fadeInUp delay-[200ms]" : "opacity-0"
+      }`}
+    >
+      Game Development Studio
+    </h1>
+    <p
+      className={`text-1xl sm:text-3xl md:text-4xl ${
+        animatingIndex >= 2 ? "animate-fadeInUp delay-[1000ms]" : "opacity-0"
+      }`}
+    >
+      We make{" "}
+      <span className="text-[#FF4500] relative font-bold">
+        {displayedText}
+        <span className="absolute inline-block w-[2px] h-[1em] center bg-white animate-blink"></span>
+      </span>{" "}
+      games.
+    </p>
+  </div>
+</div>
+
 
       {/* Bottom Image */}
       {isClient && (
@@ -133,7 +134,7 @@ export default function Hero() {
           <img
             src="/HeroImageMobile.png"
             alt="Hero Background"
-            className="absolute bottom-0 w-full object-cover"
+            className="absolute bottom-0 object-contain bg-cover w-screen"
             onContextMenu={(e) => e.preventDefault()}
             draggable="false"
           />

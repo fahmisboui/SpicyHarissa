@@ -19,6 +19,8 @@ export default function NavBar() {
   }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
+
 
   return (
     <nav
@@ -26,7 +28,7 @@ export default function NavBar() {
         scrolled ? "bg-[#390505]" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 font-khand">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -37,16 +39,28 @@ export default function NavBar() {
 
           {/* Desktop Navigation Links */}
           <div className="hidden sm:flex space-x-4">
-            <a href="#services" className="text-white hover:text-gray-300 px-3 py-2 rounded-md">
+            <a
+              href="#Services"
+              className="text-sm sm:text-base md:text-lg text-white hover:text-gray-300 px-3 py-2 rounded-md"
+            >
               Services
             </a>
-            <a href="#Games" className="text-white hover:text-gray-300 px-3 py-2 rounded-md">
+            <a
+              href="#Games"
+              className="text-sm sm:text-base md:text-lg text-white hover:text-gray-300 px-3 py-2 rounded-md"
+            >
               Games
             </a>
-            <a href="#about" className="text-white hover:text-gray-300 px-3 py-2 rounded-md">
+            <a
+              href="#AboutUs"
+              className="text-sm sm:text-base md:text-lg text-white hover:text-gray-300 px-3 py-2 rounded-md"
+            >
               About Us
             </a>
-            <a href="#contact" className="text-white hover:text-gray-300 px-3 py-2 rounded-md">
+            <a
+              href="#Contact"
+              className="text-sm sm:text-base md:text-lg text-white hover:text-gray-300 px-3 py-2 rounded-md"
+            >
               Contact
             </a>
           </div>
@@ -78,17 +92,33 @@ export default function NavBar() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-[#230202] text-white p-4 space-y-4">
-          <a href="#services" className="block px-3 py-2 rounded-md">
+        <div className="sm:hidden bg-[#230202] text-white p-4 space-y-4">
+          <a
+            href="#Services"
+            className="block text-sm sm:text-base md:text-lg px-3 py-2 rounded-md"
+            onClick={closeMenu}
+          >
             Services
           </a>
-          <a href="#Games" className="block px-3 py-2 rounded-md">
+          <a
+            href="#Games"
+            className="block text-sm sm:text-base md:text-lg px-3 py-2 rounded-md"
+            onClick={closeMenu}
+          >
             Games
           </a>
-          <a href="#about" className="block px-3 py-2 rounded-md">
+          <a
+            href="#AboutUs"
+            className="block text-sm sm:text-base md:text-lg px-3 py-2 rounded-md"
+            onClick={closeMenu}
+          >
             About Us
           </a>
-          <a href="#contact" className="block px-3 py-2 rounded-md">
+          <a
+            href="#Contact"
+            className="block text-sm sm:text-base md:text-lg px-3 py-2 rounded-md"
+            onClick={closeMenu}
+          >
             Contact
           </a>
         </div>

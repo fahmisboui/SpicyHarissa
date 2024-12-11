@@ -1,13 +1,13 @@
 import NavBar from "./components/Navbar";
 import Hero from './components/Hero';
-
-import Image from "next/image";
+import Services from './components/Services';
 
 export default function Home() {
   return (
     <div>
       <NavBar />
       <Hero />
+      <Services />
     </div>
   );
 }
