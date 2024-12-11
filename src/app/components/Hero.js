@@ -19,13 +19,11 @@ export default function Hero() {
   const [hasAnimated, setHasAnimated] = useState(false); // Track if the animation has already occurred
 
   useEffect(() => {
-    // Ensure this effect only runs on the client
     setIsClient(true);
   }, []);
 
   useEffect(() => {
     if (!hasAnimated) {
-      // Set shorter delays for faster animations
       setTimeout(() => setAnimatingIndex(1), 500); // Delay for the second text
       setTimeout(() => setAnimatingIndex(2), 1300); // Delay for the third text
 
@@ -66,7 +64,7 @@ export default function Hero() {
 
     const timeout = setTimeout(handleTyping, isDeleting ? deletingSpeed : typingSpeed);
     return () => clearTimeout(timeout);
-  }, [displayedText, isDeleting, wordIndex, initialWaitDone, isClient]);
+  }, [displayedText, isDeleting, wordIndex, initialWaitDone, isClient, words]); // Added 'words' to the dependency array
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
@@ -91,38 +89,37 @@ export default function Hero() {
         <div className="absolute top-40 bottom-40 right-[18px] w-[1px] bg-white"></div>
       </div>
 
-{/* Content */}
-<div className="absolute inset-x-0 top-[calc(50%-150px)] md:top-[calc(50%-30%)]  flex justify-center items-center text-center text-white z-10">
-  <div>
-    <h1
-      className={`text-3xl sm:text-5xl md:text-6xl font-bold mb-4 ${
-        animatingIndex >= 0 ? "animate-fadeInUp delay-[50ms]" : "opacity-0"
-      }`}
-    >
-      Spicy Harissa
-    </h1>
-    <h1
-      className={`text-3xl sm:text-5xl md:text-6xl font-bold mb-4 ${
-        animatingIndex >= 1 ? "animate-fadeInUp delay-[200ms]" : "opacity-0"
-      }`}
-    >
-      Game Development Studio
-    </h1>
-    <p
-      className={`text-1xl sm:text-3xl md:text-4xl ${
-        animatingIndex >= 2 ? "animate-fadeInUp delay-[1000ms]" : "opacity-0"
-      }`}
-    >
-      We make{" "}
-      <span className="text-[#FF4500] relative font-bold">
-        {displayedText}
-        <span className="absolute inline-block w-[2px] h-[1em] center bg-white animate-blink"></span>
-      </span>{" "}
-      games.
-    </p>
-  </div>
-</div>
-
+      {/* Content */}
+      <div className="absolute inset-x-0 top-[calc(50%-150px)] md:top-[calc(50%-30%)]  flex justify-center items-center text-center text-white z-10">
+        <div>
+          <h1
+            className={`text-3xl sm:text-5xl md:text-6xl font-bold mb-4 ${
+              animatingIndex >= 0 ? "animate-fadeInUp delay-[50ms]" : "opacity-0"
+            }`}
+          >
+            Spicy Harissa
+          </h1>
+          <h1
+            className={`text-3xl sm:text-5xl md:text-6xl font-bold mb-4 ${
+              animatingIndex >= 1 ? "animate-fadeInUp delay-[200ms]" : "opacity-0"
+            }`}
+          >
+            Game Development Studio
+          </h1>
+          <p
+            className={`text-1xl sm:text-3xl md:text-4xl ${
+              animatingIndex >= 2 ? "animate-fadeInUp delay-[1000ms]" : "opacity-0"
+            }`}
+          >
+            We make{" "}
+            <span className="text-[#FF4500] relative font-bold">
+              {displayedText}
+              <span className="absolute inline-block w-[2px] h-[1em] center bg-white animate-blink"></span>
+            </span>{" "}
+            games.
+          </p>
+        </div>
+      </div>
 
       {/* Bottom Image */}
       {isClient && (

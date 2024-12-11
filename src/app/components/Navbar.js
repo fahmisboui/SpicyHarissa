@@ -1,26 +1,30 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (typeof window !== "undefined") {
-        setScrolled(window.scrollY > 0); // Simplified scroll check
-      }
-    };
+    // Check if the window object is available (client-side)
+    if (typeof window !== "undefined") {
+      const handleScroll = () => {
+        setScrolled(window.scrollY > 0);
+      };
 
-    window.addEventListener("scroll", handleScroll);
+      window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+      // Cleanup on unmount
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
   }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
-
 
   return (
     <nav
@@ -32,37 +36,37 @@ export default function NavBar() {
         <div className="flex justify-between items-center h-16 font-khand">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/" className="text-white font-bold text-xl">
+            <Link href="/" className="text-white font-bold text-xl">
               <img src="/Svgs/Logo.svg" alt="Logo" width={140} height={40} />
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation Links */}
           <div className="hidden sm:flex space-x-4">
-            <a
+            <Link
               href="#Services"
               className="text-sm sm:text-base md:text-lg text-white hover:text-gray-300 px-3 py-2 rounded-md"
             >
               Services
-            </a>
-            <a
+            </Link>
+            <Link
               href="#Games"
               className="text-sm sm:text-base md:text-lg text-white hover:text-gray-300 px-3 py-2 rounded-md"
             >
               Games
-            </a>
-            <a
+            </Link>
+            <Link
               href="#AboutUs"
               className="text-sm sm:text-base md:text-lg text-white hover:text-gray-300 px-3 py-2 rounded-md"
             >
               About Us
-            </a>
-            <a
+            </Link>
+            <Link
               href="#Contact"
               className="text-sm sm:text-base md:text-lg text-white hover:text-gray-300 px-3 py-2 rounded-md"
             >
               Contact
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -93,34 +97,34 @@ export default function NavBar() {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="sm:hidden bg-[#230202] text-white p-4 space-y-4">
-          <a
+          <Link
             href="#Services"
             className="block text-sm sm:text-base md:text-lg px-3 py-2 rounded-md"
             onClick={closeMenu}
           >
             Services
-          </a>
-          <a
+          </Link>
+          <Link
             href="#Games"
             className="block text-sm sm:text-base md:text-lg px-3 py-2 rounded-md"
             onClick={closeMenu}
           >
             Games
-          </a>
-          <a
+          </Link>
+          <Link
             href="#AboutUs"
             className="block text-sm sm:text-base md:text-lg px-3 py-2 rounded-md"
             onClick={closeMenu}
           >
             About Us
-          </a>
-          <a
+          </Link>
+          <Link
             href="#Contact"
             className="block text-sm sm:text-base md:text-lg px-3 py-2 rounded-md"
             onClick={closeMenu}
           >
             Contact
-          </a>
+          </Link>
         </div>
       )}
     </nav>
