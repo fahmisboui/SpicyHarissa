@@ -36,7 +36,9 @@ export default function NavBar() {
         <div className="flex justify-between items-center h-16 font-khand">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="text-white font-bold text-xl">
+            <Link href="/" className="text-white font-bold text-xl"
+            onClick={() => window.location.reload()}
+            >
               <img src="/Svgs/Logo.svg" alt="Logo" width={140} height={40} />
             </Link>
           </div>

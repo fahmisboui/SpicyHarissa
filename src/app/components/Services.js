@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Services() {
   return (
-    <section id="Services" className="relative w-full min-h-screen bg-[rgba(255,255,255,1.0)] [background:linear-gradient(180deg,rgb(47,1,1)_0%,rgb(0,0,0)_100%)]">
+    <section id="Services" className="relative w-full h-auto bg-[rgba(255,255,255,1.0)] [background:linear-gradient(180deg,rgb(47,1,1)_0%,rgb(0,0,0)_100%)]">
       <h1 className="relative pt-24 text-center font-bold text-white text-3xl sm:text-4xl">
         Services
       </h1>
@@ -33,7 +33,7 @@ export default function Services() {
             </li>
           </ul>
           <button className="px-6 py-2 mt-4 bg-white text-black rounded-lg shadow-lg">
-            Get Now
+            Get in touch
           </button>
         </div>
         {/* Second Service*/}
@@ -62,7 +62,7 @@ export default function Services() {
             </li>
           </ul>
           <button className="px-6 py-2 mt-4 bg-white text-black rounded-lg shadow-lg">
-            Get Now
+          Get in touch
           </button>
         </div>
         {/* Third Service */}
@@ -91,7 +91,7 @@ export default function Services() {
             </li>
           </ul>
           <button className="px-6 py-2 mt-4 bg-white text-black rounded-lg shadow-lg">
-            Get Now
+          Get in touch
           </button>
         </div>
       </div>

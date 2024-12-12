@@ -7,13 +7,12 @@
 :root {
   --black: rgba(0, 0, 0, 1);
   --dark-red: rgba(149, 12, 12, 1);
-  --headers-headers-navigations-font-family: "Khand", Helvetica;
+  --headers-headers-navigations-font-family: "Khand";
   --headers-headers-navigations-font-size: 96px;
   --headers-headers-navigations-font-style: normal;
   --headers-headers-navigations-font-weight: 700;
   --headers-headers-navigations-letter-spacing: 0px;
   --headers-headers-navigations-line-height: normal;
-  --paragraph-font-family: "Noto Sans", Helvetica;
   --paragraph-font-size: 20px;
   --paragraph-font-style: normal;
   --paragraph-font-weight: 500;
@@ -24,13 +23,6 @@
 }
 html {
   scroll-behavior: smooth;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #000000;
-    --foreground: #ededed;
-  }
 }
 
 body {
