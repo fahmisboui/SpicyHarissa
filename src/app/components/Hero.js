@@ -67,7 +67,7 @@ export default function Hero() {
   }, [displayedText, isDeleting, wordIndex, initialWaitDone, isClient, words]); // Added 'words' to the dependency array
 
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section id="Hero" className="relative w-full h-screen overflow-hidden">
       <svg
         className="absolute inset-0 w-full h-full"
         xmlns="http://www.w3.org/2000/svg"

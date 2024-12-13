@@ -17,9 +17,8 @@ export default function NavBar() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link
-              href="/"
+              href="#Hero"
               className="text-white font-bold text-xl"
-              onClick={() => router.reload()}
             >
               <img src="/Svgs/Logo.svg" alt="Logo" width={140} height={40} />
             </Link>
