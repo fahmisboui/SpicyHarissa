@@ -7,17 +7,17 @@ import Link from "next/link";
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
-    // Check if the window object is available (client-side)
-    if (typeof window !== "undefined") {
-      const handleScroll = () => {
+    const handleScroll = () => {
+      if (typeof window !== "undefined") {
         setScrolled(window.scrollY > 0);
-      };
+      }
+    };
 
+    if (typeof window !== "undefined") {
       window.addEventListener("scroll", handleScroll);
-
-      // Cleanup on unmount
       return () => {
         window.removeEventListener("scroll", handleScroll);
       };
@@ -26,7 +26,7 @@ export default function NavBar() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
-  const router = useRouter();
+
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
@@ -37,14 +37,17 @@ export default function NavBar() {
         <div className="flex justify-between items-center h-16 font-khand">
           {/* Logo */}
           <div className="flex-shrink-0">
-      <Link
-        href="/"
-        className="text-white font-bold text-xl"
-        onClick={() => router.reload()}
-      >
-        <img src="/Svgs/Logo.svg" alt="Logo" width={140} height={40} />
-      </Link>
-    </div>
+            <Link
+              href="/"
+              className="text-white font-bold text-xl"
+              onClick={(e) => {
+                e.preventDefault(); // Prevent default link behavior
+                router.refresh(); // Trigger a page refresh
+              }}
+            >
+              <img src="/Svgs/Logo.svg" alt="Logo" width={140} height={40} />
+            </Link>
+          </div>
 
           {/* Desktop Navigation Links */}
           <div className="hidden sm:flex space-x-4">
