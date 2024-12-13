@@ -10,18 +10,19 @@ export default function NavBar() {
   const router = useRouter();
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return; // Prevents SSR errors
+    }
+
     const handleScroll = () => {
-      if (typeof window !== "undefined") {
-        setScrolled(window.scrollY > 0);
-      }
+      setScrolled(window.scrollY > 0);
     };
 
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", handleScroll);
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -41,8 +42,7 @@ export default function NavBar() {
               href="/"
               className="text-white font-bold text-xl"
               onClick={(e) => {
-                e.preventDefault(); // Prevent default link behavior
-                router.refresh(); // Trigger a page refresh
+                router.reload(); // Refresh page
               }}
             >
               <img src="/Svgs/Logo.svg" alt="Logo" width={140} height={40} />
