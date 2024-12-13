@@ -1,45 +1,17 @@
 "use client";
-
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function NavBar() {
-  const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isClient, setIsClient] = useState(false);
   const router = useRouter();
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    if (isClient) {
-      const handleScroll = () => {
-        if (document.documentElement.scrollTop > 0 || document.body.scrollTop > 0) {
-          setScrolled(true);
-        } else {
-          setScrolled(false);
-        }
-      };
-
-      document.addEventListener("scroll", handleScroll);
-      return () => {
-        document.removeEventListener("scroll", handleScroll);
-      };
-    }
-  }, [isClient]);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
-        scrolled ? "bg-[#230202]" : "bg-transparent"
-      }`}
-    >
+    <nav className="fixed top-0 w-full z-50 bg-[#230202]">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 font-khand">
           {/* Logo */}
@@ -47,9 +19,7 @@ export default function NavBar() {
             <Link
               href="/"
               className="text-white font-bold text-xl"
-              onClick={(e) => {
-                router.reload();
-              }}
+              onClick={() => router.reload()}
             >
               <img src="/Svgs/Logo.svg" alt="Logo" width={140} height={40} />
             </Link>
@@ -85,23 +55,9 @@ export default function NavBar() {
 
           {/* Mobile Menu Button */}
           <div className="sm:hidden">
-            <button
-              className="bg-[#800A07] text-white focus:outline-none p-2 rounded-md"
-              onClick={toggleMenu}
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+            <button className="bg-[#800A07] text-white focus:outline-none p-2 rounded-md" onClick={toggleMenu}>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
@@ -111,32 +67,16 @@ export default function NavBar() {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="sm:hidden bg-[#230202] text-white p-4 space-y-4">
-          <Link
-            href="#Services"
-            className="block text-sm sm:text-base md:text-lg px-3 py-2 rounded-md"
-            onClick={closeMenu}
-          >
+          <Link href="#Services" className="block text-sm sm:text-base md:text-lg px-3 py-2 rounded-md" onClick={closeMenu}>
             Services
           </Link>
-          <Link
-            href="#Games"
-            className="block text-sm sm:text-base md:text-lg px-3 py-2 rounded-md"
-            onClick={closeMenu}
-          >
+          <Link href="#Games" className="block text-sm sm:text-base md:text-lg px-3 py-2 rounded-md" onClick={closeMenu}>
             Games
           </Link>
-          <Link
-            href="#AboutUs"
-            className="block text-sm sm:text-base md:text-lg px-3 py-2 rounded-md"
-            onClick={closeMenu}
-          >
+          <Link href="#AboutUs" className="block text-sm sm:text-base md:text-lg px-3 py-2 rounded-md" onClick={closeMenu}>
             About Us
           </Link>
-          <Link
-            href="#Contact"
-            className="block text-sm sm:text-base md:text-lg px-3 py-2 rounded-md"
-            onClick={closeMenu}
-          >
+          <Link href="#Contact" className="block text-sm sm:text-base md:text-lg px-3 py-2 rounded-md" onClick={closeMenu}>
             Contact
           </Link>
         </div>
