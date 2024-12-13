@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function NavBar() {
@@ -25,7 +26,7 @@ export default function NavBar() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
-
+  const router = useRouter();
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
@@ -36,16 +37,14 @@ export default function NavBar() {
         <div className="flex justify-between items-center h-16 font-khand">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="text-white font-bold text-xl"
-            onClick={() =>{
-              if (typeof window !== "undefined")
-              {
-                window.location.reload()
-              }}}
-            >
-              <img src="/Svgs/Logo.svg" alt="Logo" width={140} height={40} />
-            </Link>
-          </div>
+      <Link
+        href="/"
+        className="text-white font-bold text-xl"
+        onClick={() => router.reload()}
+      >
+        <img src="/Svgs/Logo.svg" alt="Logo" width={140} height={40} />
+      </Link>
+    </div>
 
           {/* Desktop Navigation Links */}
           <div className="hidden sm:flex space-x-4">
