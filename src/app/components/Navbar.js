@@ -10,18 +10,18 @@ export default function NavBar() {
   const router = useRouter();
 
   useEffect(() => {
-    if (typeof window === "undefined") {
-      return; // Prevents SSR errors
-    }
-
     const handleScroll = () => {
-      setScrolled(window.scrollY > 0);
+      if (document.documentElement.scrollTop > 0 || document.body.scrollTop > 0) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    document.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -31,7 +31,7 @@ export default function NavBar() {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
-        scrolled ? "bg-[#390505]" : "bg-transparent"
+        scrolled ? "bg-[#230202]" : "bg-transparent"
       }`}
     >
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,7 +42,7 @@ export default function NavBar() {
               href="/"
               className="text-white font-bold text-xl"
               onClick={(e) => {
-                router.reload(); // Refresh page
+                router.reload();
               }}
             >
               <img src="/Svgs/Logo.svg" alt="Logo" width={140} height={40} />
