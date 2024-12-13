@@ -7,23 +7,29 @@ import Link from "next/link";
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (document.documentElement.scrollTop > 0 || document.body.scrollTop > 0) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    document.addEventListener("scroll", handleScroll);
-
-    return () => {
-      document.removeEventListener("scroll", handleScroll);
-    };
+    setIsClient(true);
   }, []);
+
+  useEffect(() => {
+    if (isClient) {
+      const handleScroll = () => {
+        if (document.documentElement.scrollTop > 0 || document.body.scrollTop > 0) {
+          setScrolled(true);
+        } else {
+          setScrolled(false);
+        }
+      };
+
+      document.addEventListener("scroll", handleScroll);
+      return () => {
+        document.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, [isClient]);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
