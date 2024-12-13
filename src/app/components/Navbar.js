@@ -37,7 +37,11 @@ export default function NavBar() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="text-white font-bold text-xl"
-            onClick={() => window.location.reload()}
+            onClick={() =>{
+              if (typeof window !== "undefined")
+              {
+                window.location.reload()
+              }}}
             >
               <img src="/Svgs/Logo.svg" alt="Logo" width={140} height={40} />
             </Link>
