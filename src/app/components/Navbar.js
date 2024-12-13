@@ -1,12 +1,9 @@
 "use client";
 import { useState} from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const router = useRouter();
-
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
