@@ -6,56 +6,53 @@ export default function Hero() {
   const [displayedText, setDisplayedText] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [initialWaitDone, setInitialWaitDone] = useState(false); // New state for initial delay
+  const [initialWaitDone, setInitialWaitDone] = useState(false);
   const [isClient, setIsClient] = useState(false); // Track if the component is rendered on the client
 
   const words = ["spicy", "exciting", "engaging", "fun"];
-  const typingSpeed = 80; // Typing speed in ms
-  const deletingSpeed = 40; // Deleting speed in ms
-  const pauseTime = 800; // Pause before deleting in ms
-  const initialDelay = 2000; // Initial delay before starting the loop
+  const typingSpeed = 80;
+  const deletingSpeed = 40;
+  const pauseTime = 800;
+  const initialDelay = 2000;
 
-  const [animatingIndex, setAnimatingIndex] = useState(0); // Track which element is animating
-  const [hasAnimated, setHasAnimated] = useState(false); // Track if the animation has already occurred
+  const [animatingIndex, setAnimatingIndex] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
+  // Ensure code runs only on the client
   useEffect(() => {
-    setIsClient(true);
+    if (typeof window !== "undefined") {
+      setIsClient(true);
+    }
   }, []);
 
   useEffect(() => {
     if (!hasAnimated) {
-      setTimeout(() => setAnimatingIndex(1), 500); // Delay for the second text
-      setTimeout(() => setAnimatingIndex(2), 1300); // Delay for the third text
-
-      setHasAnimated(true); // Ensure animation happens only once
+      setTimeout(() => setAnimatingIndex(1), 500);
+      setTimeout(() => setAnimatingIndex(2), 1300);
+      setHasAnimated(true);
     }
   }, [hasAnimated]);
 
   useEffect(() => {
-    // Initial delay before starting the typing effect
     const timer = setTimeout(() => setInitialWaitDone(true), initialDelay);
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
-    if (!initialWaitDone || !isClient) return; // Wait until the initial delay is done and only run on the client
+    if (!initialWaitDone || !isClient) return;
 
     const handleTyping = () => {
       const currentWord = words[wordIndex];
       if (!isDeleting) {
-        // Typing effect
         if (displayedText.length < currentWord.length) {
           setDisplayedText((prev) => prev + currentWord.charAt(displayedText.length));
         } else {
-          // Pause before deleting
           setTimeout(() => setIsDeleting(true), pauseTime);
         }
       } else {
-        // Deleting effect
         if (displayedText.length > 0) {
           setDisplayedText((prev) => prev.slice(0, -1));
         } else {
-          // Move to the next word
           setIsDeleting(false);
           setWordIndex((prev) => (prev + 1) % words.length);
         }
@@ -64,7 +61,7 @@ export default function Hero() {
 
     const timeout = setTimeout(handleTyping, isDeleting ? deletingSpeed : typingSpeed);
     return () => clearTimeout(timeout);
-  }, [displayedText, isDeleting, wordIndex, initialWaitDone, isClient, words]); // Added 'words' to the dependency array
+  }, [displayedText, isDeleting, wordIndex, initialWaitDone, isClient, words]);
 
   return (
     <section id="Hero" className="relative w-full h-screen overflow-hidden">
@@ -83,14 +80,12 @@ export default function Hero() {
         <rect width="100%" height="100%" fill="url(#paint0_radial_147_48)" />
       </svg>
 
-      {/* White Strokes on the sides */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-40 bottom-40 left-[18px] w-[1px] bg-white"></div>
         <div className="absolute top-40 bottom-40 right-[18px] w-[1px] bg-white"></div>
       </div>
 
-      {/* Content */}
-      <div className="absolute inset-x-0 top-[calc(50%-150px)] md:top-[calc(50%-30%)]  flex justify-center items-center text-center text-white z-10">
+      <div className="absolute inset-x-0 top-[calc(50%-150px)] md:top-[calc(50%-30%)] flex justify-center items-center text-center text-white z-10">
         <div>
           <h1
             className={`text-3xl sm:text-5xl md:text-6xl font-bold mb-4 ${
@@ -121,13 +116,9 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Bottom Image */}
       {isClient && (
         <picture>
-          <source
-            srcSet="/HeroImageDesktop.png"
-            media="(min-width: 475px)"
-          />
+          <source srcSet="/HeroImageDesktop.png" media="(min-width: 475px)" />
           <img
             src="/HeroImageMobile.png"
             alt="Hero Background"
