@@ -29,15 +29,17 @@ export default function WhyUs() {
   ];
 
   return (
-    <div className="relative w-full h-auto bg-gradient-to-b from-[#660101] to-black flex flex-col items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+    <div className="relative w-full h-auto bg-gradient-to-b from-[#660101] to-[rgb(48,0,0)] flex flex-col items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
       <h1 className="text-center font-bold text-white text-3xl sm:text-4xl lg:text-5xl mb-8">
         Why Spicy Harissa
       </h1>
-      <div className="text-center mb-12">
-        <p className="text-white text-base sm:text-lg lg:text-xl font-semibold max-w-3xl mx-auto">
+      <div className="text-cleft mb-12">
+        <p className="text-white text-base mx-auto">
           We are a passionate indie team with extensive experience in game
-          development. Our skilled professionals are committed to providing tailored
-          solutions to bring your creative vision to life, no matter the platform or engine.
+          development. <br/>
+          Our skilled professionals are committed to providing tailored
+          solutions to bring your creative vision to life, <br/>
+           no matter the platform or engine.
         </p>
       </div>
 

@@ -32,9 +32,11 @@ export default function Services() {
               <span className="font-medium">Tailored Solutions:</span> Custom improvements to match your vision.
             </li>
           </ul>
+          <a href='#Contact'>
           <button className="px-6 py-2 mt-4 bg-white text-black rounded-lg shadow-lg">
-            Get in touch
+          Get in touch
           </button>
+          </a>
         </div>
         {/* Second Service*/}
         <div className="flex flex-col items-center gap-4 p-5 w-[300px] h-[350px] sm:h-[400px] lg:h-[450px] rounded-3xl border-2 border-white bg-gradient-to-b from-[#720000] to-[#260000] lg:translate-y-[-20px]">
@@ -61,9 +63,11 @@ export default function Services() {
               <span className="font-medium">Player-Focused Design:</span> We create experiences that captivate and engage your audience.
             </li>
           </ul>
+          <a href='#Contact'>
           <button className="px-6 py-2 mt-4 bg-white text-black rounded-lg shadow-lg">
           Get in touch
           </button>
+          </a>
         </div>
         {/* Third Service */}
         <div className="flex flex-col items-center gap-4 p-5 w-[300px] h-[350px] sm:h-[400px] lg:h-[450px] rounded-3xl border-2 border-white bg-gradient-to-b from-[#720000] to-[#260000]">
@@ -90,9 +94,11 @@ export default function Services() {
               <span className="font-medium">Custom Applications:</span> Tailored tools for education, architecture, or product visualization.
             </li>
           </ul>
+          <a href='#Contact'>
           <button className="px-6 py-2 mt-4 bg-white text-black rounded-lg shadow-lg">
           Get in touch
           </button>
+          </a>
         </div>
       </div>
     </section>

@@ -47,7 +47,7 @@ export default function Games() {
         <div className="relative w-full h-[500px]">
           {/* Background Image */}
           <div
-            className="absolute inset-0 bg-no-repeat bg-center"
+            className=" w-full absolute inset-0 bg-no-repeat bg-center"
             style={{
               backgroundImage: `url(${isMobile ? games[currentIndex].imageMobile : games[currentIndex].imageDesktop})`,
             }}

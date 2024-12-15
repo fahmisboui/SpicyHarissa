@@ -4,6 +4,8 @@ import Services from './components/Services';
 import Games from "./components/Games";
 import About from "./components/About";
 import WhyUs from "./components/WhyUs";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -14,6 +16,8 @@ export default function Home() {
       <Games />
       <About />
       <WhyUs />
+      <Contact />
+      <Footer />
     </div>
   );
 }

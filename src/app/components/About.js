@@ -34,7 +34,7 @@ export default function About() {
   return (
     <section
       id="AboutUs"
-      className="relative w-full h-auto bg-white bg-gradient-to-b from-[#0B0000] to-[#670000] py-12"
+      className="relative w-full h-auto bg-gradient-to-b from-[#0B0000] to-[#670000] py-12"
     >
         <h1 className="relative pt-12 text-center font-bold text-white text-3xl sm:text-4xl">
         About Us
